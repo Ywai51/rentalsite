@@ -3,15 +3,27 @@
 <html>
   <head>
     {% include "snippets/meta.html" %}
-   
     {% include "snippets/styles.html" %}
-    
+
     <title>{% block title %}{% endblock title %}</title>
     
   </head>
   <body>
-    {% block content %}{% endblock content %}
-
+    {% include "snippets/navbar.html" %}
+    {% include "snippets/fab.html" %}
+    
+    <div class="jumbotron m-0" id="jumbrotron-img">
+        <div class="container ">
+            {% block header %}
+            {% endblock header %}
+        </div>
+    </div>
+    <div class="container-fluid">
+       <div id="body1" class="container bg-light text-dark shadow rounded" style="margin-top: -100px;" >
+        {% block content %}{% endblock content %}
+      </div>
+    </div>
+    {% include "snippets/footer.html" %}   
     {% include "snippets/script.html" %}
 
   </body>
