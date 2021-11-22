@@ -1,30 +1,34 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
+  <head> 
+  {% block stylesheet %}
     {% include "snippets/meta.html" %}
     {% include "snippets/styles.html" %}
+  {% endblock stylesheet %}
 
     <title>{% block title %}{% endblock title %}</title>
     
   </head>
   <body>
     {% include "snippets/navbar.html" %}
-    {% include "snippets/fab.html" %}
     
     <div class="jumbotron m-0" id="jumbrotron-img">
-        <div class="container ">
+        <div class="container mt-5">
             {% block header %}
+
             {% endblock header %}
         </div>
     </div>
+
     <div class="container-fluid">
-       <div id="body1" class="container bg-light text-dark shadow rounded" style="margin-top: -100px;" >
+       <div id="body1" class="container bg-light text-dark shadow rounded-lg" style="margin-top: -100px;" >
         {% block content %}{% endblock content %}
       </div>
     </div>
     {% include "snippets/footer.html" %}   
-    {% include "snippets/script.html" %}
 
   </body>
+    {% include "snippets/script.html" %}
+
 </html>

@@ -1,67 +1,49 @@
 {% extends 'base.html' %} 
-{% load static %}
-{% block title %} {{title}} {% endblock title %} 
+{% load static %} 
+{% block title %} 
 
+{{title}} 
+
+{% endblock title %} 
+{% block header %}
+    <h1 class="display-3 text-light text-center">{{heading}}</h1>
+    <p class="lead text-light text-center">{{subheading}}</p>
+{% endblock header %}
 {% block content %}
 
-<div class="row rounded text-dark" style="height: max-content; display: block;">
-    <div class="row">
-        <div class="col-6">
-            <h1 class="m-4 display-4">
-            AGENT-001 \ Jett
-            </h1>
-            <img class="img-fluid h-50"src="{% static 'base-img/ico.png' %}" alt="">
-            <p class="m-4 ">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit libero, perspiciatis maxime eos assumenda quis possimus sunt ullam voluptatum expedita saepe qui natus commodi totam sequi itaque dicta quibusdam atque?
-                Ad aut quod voluptatem maiores harum, nulla voluptate velit culpa, facere inventore quo dignissimos debitis. Ea, ex quod quae nihil consequatur et assumenda explicabo laborum voluptatibus asperiores placeat odio eos!
-                Odit, veritatis. Beatae fugit neque ut excepturi dolorem, similique accusantium obcaecati labore unde. Fuga quisquam expedita mollitia quo, eaque fugiat deserunt, provident veniam fugit, dolores iste laudantium architecto accusantium aut?
-                Debitis, nihil. Deserunt fuga tempore atque magnam id illum aspernatur ut, asperiores dolore dicta tempora magni soluta repellendus repudiandae, nostrum necessitatibus culpa? Laborum distinctio, sapiente eaque nesciunt impedit libero molestiae.
-            </p>
-        </div>
-        <div class="col-6">
-            <h1 class="m-4 display-4">
-                AGENT-001 \ Jett
-            </h1>
-            <img class="img-fluid h-50"src="{% static 'base-img/ico.png' %}" alt="">
-            <p class="m-4 ">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit libero, perspiciatis maxime eos assumenda quis possimus sunt ullam voluptatum expedita saepe qui natus commodi totam sequi itaque dicta quibusdam atque?
-                Ad aut quod voluptatem maiores harum, nulla voluptate velit culpa, facere inventore quo dignissimos debitis. Ea, ex quod quae nihil consequatur et assumenda explicabo laborum voluptatibus asperiores placeat odio eos!
-                Odit, veritatis. Beatae fugit neque ut excepturi dolorem, similique accusantium obcaecati labore unde. Fuga quisquam expedita mollitia quo, eaque fugiat deserunt, provident veniam fugit, dolores iste laudantium architecto accusantium aut?
-                Debitis, nihil. Deserunt fuga tempore atque magnam id illum aspernatur ut, asperiores dolore dicta tempora magni soluta repellendus repudiandae, nostrum necessitatibus culpa? Laborum distinctio, sapiente eaque nesciunt impedit libero molestiae.
-            </p>
-        </div>
+  <div class="row">
+    <div class="col-6">
+      <h1 class="m-4 display-4">AGENT-001 \ Jett</h1>
+      <img
+        class="img-fluid h-50"
+        src="{% static 'base-img/contoh.png' %}"
+        alt=""
+      />
     </div>
-        
-</div>
+    <div class="col-6">
+      <h1 class="m-4 display-4">AGENT-001 \ Jett</h1>
+      <img
+        class="img-fluid h-50"
+        src="{% static 'base-img/contoh.png' %}"
+        alt=""
+      />
+    </div>
+  </div>
 <div class="row">
-    <div class="col-6">
-        <h1 class="m-4 display-4">
-            AGENT-001 \ Jett
-        </h1>
-        <img class="img-fluid h-50"src="{% static 'base-img/ico.png' %}" alt="">
-        <p class="m-4 ">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit libero, perspiciatis maxime eos assumenda quis possimus sunt ullam voluptatum expedita saepe qui natus commodi totam sequi itaque dicta quibusdam atque?
-            Ad aut quod voluptatem maiores harum, nulla voluptate velit culpa, facere inventore quo dignissimos debitis. Ea, ex quod quae nihil consequatur et assumenda explicabo laborum voluptatibus asperiores placeat odio eos!
-            Odit, veritatis. Beatae fugit neque ut excepturi dolorem, similique accusantium obcaecati labore unde. Fuga quisquam expedita mollitia quo, eaque fugiat deserunt, provident veniam fugit, dolores iste laudantium architecto accusantium aut?
-            Debitis, nihil. Deserunt fuga tempore atque magnam id illum aspernatur ut, asperiores dolore dicta tempora magni soluta repellendus repudiandae, nostrum necessitatibus culpa? Laborum distinctio, sapiente eaque nesciunt impedit libero molestiae.
-         </p>
-    </div>
-    <div class="col-6">
-        <h1 class="m-4 display-4">
-            AGENT-001 \ Jett
-        </h1>
-        <img class="img-fluid h-50"src="{% static 'base-img/ico.png' %}" alt="">
-        <p class="m-4 ">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit libero, perspiciatis maxime eos assumenda quis possimus sunt ullam voluptatum expedita saepe qui natus commodi totam sequi itaque dicta quibusdam atque?
-            Ad aut quod voluptatem maiores harum, nulla voluptate velit culpa, facere inventore quo dignissimos debitis. Ea, ex quod quae nihil consequatur et assumenda explicabo laborum voluptatibus asperiores placeat odio eos!
-            Odit, veritatis. Beatae fugit neque ut excepturi dolorem, similique accusantium obcaecati labore unde. Fuga quisquam expedita mollitia quo, eaque fugiat deserunt, provident veniam fugit, dolores iste laudantium architecto accusantium aut?
-            Debitis, nihil. Deserunt fuga tempore atque magnam id illum aspernatur ut, asperiores dolore dicta tempora magni soluta repellendus repudiandae, nostrum necessitatibus culpa? Laborum distinctio, sapiente eaque nesciunt impedit libero molestiae.
-         </p>
-    </div>
+  <div class="col-6">
+    <h1 class="m-4 display-4">AGENT-001 \ Jett</h1>
+    <img class="img-fluid h-50" src="{% static 'base-img/contoh.png' %}" alt="" />
+
+  </div>
+  <div class="col-6">
+    <h1 class="m-4 display-4">AGENT-001 \ Jett</h1>
+    <img class="img-fluid h-50" src="{% static 'base-img/contoh.png' %}" alt="" />
+  
+  </div>
 </div>
 <div class="row p-4">
-    <div class="col-12 d-flex justify-content-center">
-        <button type="button" class="btn btn-primary">------ HALAMAN ------ </button>
-    </div>
+  <div class="col-12 d-flex justify-content-center">
+    <button type="button" class="btn btn-primary">------ HALAMAN ------</button>
+  </div>
 </div>
 {% endblock content %}

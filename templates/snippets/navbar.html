@@ -1,36 +1,36 @@
 {% load static %}
-<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-primary">
+<nav class="navbar fixed-top navbar-expand-sm navbar-light" id="navbarku">
         <div class="container">
-                <a href="#" class="navbar-brand p-0 m-2">
-                    <img style="height: 40px;" src="{% static 'base-img/banner.png' %}" alt="Banner">
+                <a href="#" class="navbar-brand p-0 mb-1">
+                    <img style="height: 45px;" src="{% static 'base-img/sitebanner.png' %}" alt="Banner">
                 </a>
-                
                 <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
                 
-                <ul class="navbar-nav ml-4 ">
+                <ul class="navbar-nav ml-3 ">
                     <li class="nav-item">
-                        <a class="text-light nav-link" href="{% url 'home:index' %}">Home</a>
+                        <a class="text-light nav-link" href="{% url 'home:index' %}"><i class="fas fa-home"></i> Home</a>
                         
                     </li>
+                    
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Heroes</a>
-                        
+                        <a class="nav-link text-light" href="#"><i class="fas fa-car"></i> Mobil</a>
                     </li>
-                
-                    <div class="nav-item dropdown">
-                        <button class="btn text-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Hero By Class
-                        </button>
-                        <div class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Mage</a>
-                            <a class="dropdown-item" href="#">Fighter</a>
-                            <a class="dropdown-item" href="#">Assassin</a>
-                            <a class="dropdown-item" href="#">Marksman</a>
-                        </div>
-                    </div>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#"><i class="fas fa-motorcycle"></i> Motor</a>
+                    </li>
+                    
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <form class="form-inline ">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
