@@ -4,7 +4,7 @@ from django.shortcuts import render
 def index(request):
     context = {
         'title':"R2M | Rental Mobil-Motor",
-        'heading':"Welcome user!!",
-        'subheading':"Silahkan pilih kendaraan yang akan disewa "
+        'heading':"Selamat datang user!",
+        'subheading':"Baru pertama kali kemari? silahkan daftar disini. Atau login jika sudah mempunyai akun."
     }
     return render(request, 'home/index.html',context)
