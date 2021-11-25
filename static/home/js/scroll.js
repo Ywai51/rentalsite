@@ -10,3 +10,4 @@ $(window).scroll(
             $("#navbarku").removeClass("bg-primary");
         }
     });
+
