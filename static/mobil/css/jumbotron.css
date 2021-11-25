@@ -1,8 +1,8 @@
 .jumbotron {
-    background-image: url("/static/base-img/header.jpg");
+    background-image: url("/static/base-img/header-mobil.png") ;
     padding: 4rem 2rem;
     margin-bottom: 2rem;
-    background-color: var(--bs-primary);
+    background-color: var(--bs-light);
     
     border-radius: .3rem;  
     background-position: center;

@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar fixed-top navbar-expand-sm navbar-light" id="navbarku">
+<nav class="navbar fixed-top navbar-expand-md navbar-light" id="navbarku">
         <div class="container">
                 <a href="#" class="navbar-brand p-0 mb-1">
                     <img style="height: 45px;" src="{% static 'base-img/sitebanner.png' %}" alt="Banner">
@@ -9,30 +9,32 @@
                 </button>
             <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
                 
-                <ul class="navbar-nav ml-3 ">
+                <ul class="navbar-nav ml-lg-3 ">
                     <li class="nav-item">
                         <a class="text-light nav-link" href="{% url 'home:index' %}"><i class="fas fa-home"></i> Home</a>
-                        
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#"><i class="fas fa-car"></i> Mobil</a>
+                        <a class="nav-link text-light" href="{% url 'mobil:index' %}"><i class="fas fa-car"></i> Mobil</a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#"><i class="fas fa-motorcycle"></i> Motor</a>
+                        <a class="nav-link text-light" href="{% url 'motor:index' %}"><i class="fas fa-motorcycle"></i> Motor</a>
                     </li>
                     
                 </ul>
-                <ul class="navbar-nav ml-auto mr-1">
+                <ul class="navbar-nav ml-lg-auto mr-1">
                     <li class="nav-item">
                         <form class="form-inline ">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Cari Motor/Mobil" aria-label="Search">
-                            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Cari</button>
+                            <input class="form-control " type="search" placeholder="Cari Motor/Mobil" aria-label="Search">
+                            <button class="btn btn-outline-light my-lg-2 ml-lg-1" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-outline-light ml-md-5 "><i class="fas fa-user-circle mr-1"></i> Akun</button>
+                        <a class="nav-link" href="{% url 'akun:index' %}">
+                            <button type="button" class="btn btn-outline-light ml-lg-3" >
+                            <i class="fas fa-user-circle mr-1"></i> Akun</button>
+                        </a>
                     </li>
                 </ul>
             </div>

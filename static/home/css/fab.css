@@ -9,7 +9,7 @@
   bottom: 20px;
 }
 
-.action {
+.fab-action {
   background: darkslategrey;
   height: 50px;
   width: 50px;
@@ -18,7 +18,7 @@
   transition: background-color 0.4s ease-in-out;
 }
 
-.action i {
+.fab-action i {
   position: absolute;
   color: white;
   left: 50%;
@@ -28,18 +28,18 @@
   cursor: pointer;
 }
 
-.action:hover {
+.fab-action:hover {
   background-color:red;
 }
 
-.btn {
+.fab-btn {
   position: absolute;
   height: 35px;
   width: 35px;
   border-radius: 50%;
 }
 
-.btn i {
+.fab-btn i {
   position: absolute;
   font-size: 18px;
   color: white;

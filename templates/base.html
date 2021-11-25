@@ -2,15 +2,16 @@
 <!DOCTYPE html>
 <html>
   <head> 
+  {% include "snippets/meta.html" %}
+  {% include "snippets/styles.html" %}
   {% block stylesheet %}
-    {% include "snippets/meta.html" %}
-    {% include "snippets/styles.html" %}
   {% endblock stylesheet %}
 
     <title>{% block title %}{% endblock title %}</title>
     
   </head>
   <body>
+    <div id="loader"></div>
     {% include "snippets/navbar.html" %}
     
     <div class="jumbotron m-0" id="jumbrotron-img">
@@ -21,11 +22,12 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-       <div id="body1" class="container bg-light text-dark shadow rounded-lg" style="margin-top: -100px;" >
+    <div class="container-fluid main-content animate-bottom">
+      <div id="body1" class="container bg-light text-dark shadow rounded-lg" style="margin-top: -100px;" >
         {% block content %}{% endblock content %}
       </div>
     </div>
+    {% include "snippets/fab.html" %}
     {% include "snippets/footer.html" %}   
 
   </body>
