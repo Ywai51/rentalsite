@@ -1,36 +1,38 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head> 
+
+<head>
   {% include "snippets/meta.html" %}
   {% include "snippets/styles.html" %}
   {% block stylesheet %}
   {% endblock stylesheet %}
 
-    <title>{% block title %}{% endblock title %}</title>
-    
-  </head>
-  <body>
-    <div id="loader"></div>
-    {% include "snippets/navbar.html" %}
-    
-    <div class="jumbotron m-0" id="jumbrotron-img">
-        <div class="container mt-5">
-            {% block header %}
+  <title>{% block title %}{% endblock title %}</title>
 
-            {% endblock header %}
-        </div>
+</head>
+
+<body>
+  <div id="loader"></div>
+  {% include "snippets/navbar.html" %}
+
+  <div class="jumbotron m-0" id="jumbrotron-img">
+    <div class="container mt-5">
+      {% block header %}
+
+      {% endblock header %}
     </div>
+  </div>
 
-    <div class="container-fluid main-content animate-bottom">
-      <div id="body1" class="container bg-light text-dark shadow rounded-lg" style="margin-top: -100px;" >
-        {% block content %}{% endblock content %}
-      </div>
+  <div class="container-fluid main-content animate-bottom">
+    <div id="body1" class="container bg-light text-dark shadow rounded-lg" style="margin-top: -100px;">
+      {% block content %}{% endblock content %}
     </div>
-    {% include "snippets/fab.html" %}
-    {% include "snippets/footer.html" %}   
+  </div>
+  {% include "snippets/fab.html" %}
+  {% include "snippets/footer.html" %}
 
-  </body>
-    {% include "snippets/script.html" %}
+</body>
+{% include "snippets/script.html" %}
 
 </html>
