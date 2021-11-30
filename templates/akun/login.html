@@ -49,10 +49,10 @@
         <div id="register" class="container tab-pane active"><br>
             <h3>Register</h3>
             <br>
-            <form method="post">
+            <form method="post"> 
                 {% csrf_token %}
                 {{akunform}}
-                <button type="submit" class="col-md-6 mb-3 btn btn-primary">Daftar</button>
+                <button type="submit" name="submit" class="col-md-6 mb-3 btn btn-primary" value="daftar">Daftar</button>
             </form>
         </div>
 
@@ -60,15 +60,16 @@
         <div id="login" class="container tab-pane fade"><br>
             <h3>Log In</h3>
             <br>
-            <div class="form-group">
+            <form method="post">
+            {% csrf_token %}
                 <label for="emailform">E-mail</label>
-                <input type="email" id="emailform" class="form-control" aria-describedby="emailHelpId"
+                <input type="email" name="emailform" id="emailform" class="form-control" aria-describedby="emailHelpId"
                     placeholder="Masukkan Email">
                 <label for="pwform">Password</label>
-                <input type="password" class="form-control" name="pwform" placeholder="Masukkan Password">
+                <input type="password" class="form-control" id="pwform" name="pwform" placeholder="Masukkan Password">
                 <br>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Masuk</button>
-            </div>
+                <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block" value="masuk">Masuk</button>
+            </form>
             <br>
         </div>
     </div>

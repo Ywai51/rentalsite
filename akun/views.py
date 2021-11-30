@@ -5,13 +5,15 @@ from django.contrib import messages
 from akun.forms import FormAkun
 from .models import NewAkun
 
-#decorators
-from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
     #cek user login/belum
     if request.user.is_authenticated:
+        if request.method == "POST":
+            if request.POST['logout'] == "yes":
+                logout(request)
+                return redirect('home:index')
         email = request.user.email
         akun = NewAkun.objects.get(email=email)
         context = {
@@ -25,16 +27,29 @@ def index(request):
     else:
         return redirect('akun:login')
     
-def login(request):
+def loginView(request):
     form = FormAkun()
     if request.method == 'POST':
-        account_form = FormAkun(request.POST)
-        if account_form.is_valid():
-            account_form.save()
-            return redirect('home:index')
-        else:
-            error_list = account_form.errors.as_data()
-            messages.error(request, error_list)
+        if request.POST.get('submit') == 'daftar':
+            account_form = FormAkun(request.POST)
+            if account_form.is_valid():
+                account_form.save()
+                return redirect('home:index')
+            else:
+                error_list = account_form.errors.as_data()
+                messages.error(request, error_list)
+
+        if request.POST.get('submit') == 'masuk':
+            username = request.POST['emailform']
+            password = request.POST['pwform']
+            #cek ada user ini 
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request,user)
+                return redirect('home:index')
+            else:
+                return redirect('akun:index')
 
     context = {
         'title':"Akun login | R2M",
