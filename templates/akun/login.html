@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'akun/css/jumbotron.css' %}" />
+<script>
+    {% if messages %} 
+        {% for message in messages %}
+            alert('{{message}}') 
+        {%endfor %} 
+    {%endif %}
+</script>
+{% endblock stylesheet %}
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block header %}
+
+<div class="row m-auto ">
+    <div class="col-12 w-auto">
+        <h1 class="display-3 text-light text-center"><strong>{{heading}}</strong></h1>
+        <p class="lead text-light text-center">{{subheading}}</p>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <br>
+    <h4 class="display-6">Mendaftar atau Masuk ke Website :</h4>
+    <br>
+    </h2>
+    <br>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active h4" href="#register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link h4" href="#login">Login</a>
+        </li>
+    </ul>
+
+    <!-- Tab LOGIN -->
+    <div class="tab-content">
+        <div id="register" class="container tab-pane active"><br>
+            <h3>Register</h3>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                {{akunform}}
+                <button type="submit" class="col-md-6 mb-3 btn btn-primary">Daftar</button>
+            </form>
+        </div>
+
+        <!-- Tab SIGN up-->
+        <div id="login" class="container tab-pane fade"><br>
+            <h3>Log In</h3>
+            <br>
+            <div class="form-group">
+                <label for="emailform">E-mail</label>
+                <input type="email" id="emailform" class="form-control" aria-describedby="emailHelpId"
+                    placeholder="Masukkan Email">
+                <label for="pwform">Password</label>
+                <input type="password" class="form-control" name="pwform" placeholder="Masukkan Password">
+                <br>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Masuk</button>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scriptsheet %}
+<script src="{% static 'akun/js/akunscript.js' %}"></script>
+{% endblock scriptsheet %}

@@ -29,10 +29,16 @@
       {% block content %}{% endblock content %}
     </div>
   </div>
-  {% include "snippets/fab.html" %}
   {% include "snippets/footer.html" %}
 
+  {% include "snippets/fab.html" %}
+
 </body>
+
 {% include "snippets/script.html" %}
+
+{% block scriptsheet %}
+{% endblock scriptsheet %}
+
 
 </html>

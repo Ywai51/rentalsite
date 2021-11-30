@@ -36,19 +36,18 @@
     </div>
 </div>
 <div class="row m-4 px-4">
+    {% for mobil in mbl %}
     <div class="col-md-4">
         <div class="card mb-4" style="width: 18rem;">
-            <img src="{% static 'base-img/contoh.png' %}" class="card-img-top" alt="......">
+            <img src="{{mobil.foto_mbl.url}}" class="card-img-top" alt="Foto {{mobil.nama_mbl}}">
             <div class="card-body">
-                <h5 class="card-title">Innova RX King Z210</h5>
-                <p class="card-text text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam,
-                    repellendus repudiandae aliquam facilis cumque tenetur. Ad magni, minus maiores, et id cum, quia ut
-                    voluptatem iusto tempore non asperiores fugiat!</p>
+                <h5 class="card-title">{{mobil.nama_mbl}}</h5>
+                <p class="card-text text-secondary">{{mobil.tentang_mbl}}</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><i class="fab fa-slack-hash mr-1"></i> <button disabled="disabled"
-                        class="btn btn-primary btn-sm">4 Kursi</button></li>
-                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp. 300.000 /hari</li>
+                <li class="list-group-item"><i class="fab fa-slack-hash mr-1"></i> 
+                <button class="btn btn-outline-success active btn-sm">{{mobil.status_mbl}}</button></li>
+                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp {{mobil.harga_mbl}} /hari</li>
             </ul>
             <div class="card-body">
                 <a href="#" class="btn btn-warning"><i class="fas fa-file-invoice mr-1"></i>Detail</a>
@@ -56,5 +55,7 @@
             </div>
         </div>
     </div>
+    {% endfor %}
+
 </div>
 {% endblock content %}
