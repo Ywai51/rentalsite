@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'akun',
     'mobil',
     'motor',
+    'booking',
 ]
 
 MIDDLEWARE = [

@@ -34,7 +34,7 @@ class NewAkun(AbstractBaseUser,PermissionsMixin):
 
     email = models.EmailField(verbose_name="email", max_length=254, unique=True)
     nama = models.CharField(verbose_name="nama", max_length=70)
-    no_hp = models.CharField(verbose_name="nomor handphone", max_length=15, unique=True)
+    no_hp = models.CharField(verbose_name="nomor handphone", max_length=15, unique=False)
     tanggal_akun = models.DateTimeField(default=timezone.now)
 
     is_staff = models.BooleanField(default=False)

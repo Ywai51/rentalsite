@@ -18,5 +18,20 @@ def index(request):
         'heading':"Halaman Rental Mobil",
         'subheading':"Rental Mobil dari yang terbaik sampai yang termewah!",
         'mbl' : mbl,
+        
     }
     return render(request, 'mobil/index.html',context)
+
+def aboutMbl(request, slugInput):
+    messages.info(request, 'Anda Harus Login sebagai Pengguna web untuk Booking!')
+    mbl = mobil.objects.get(slug=slugInput)
+    context = {
+        'title':"Detail Mobil | R2M",
+        'heading' : " Halaman Detail Mobil ",
+        'subheading' : 'Perhatikan Detail Mobil Yang akan disewa di halaman ini.',
+        'mobil' : mbl,
+        'harga' : format(mbl.harga_mbl, ',')
+        #'test_group' : Group.objects.get(name='Paus'),
+        #'user_group' : request.user.groups.all()
+    }
+    return render(request, 'mobil/aboutMobil.html',context)

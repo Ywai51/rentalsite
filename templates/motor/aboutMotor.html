@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'motor/css/jumbotron.css' %}" />
+{% endblock stylesheet %}
+
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block header %}
+<div class="row m-auto ">
+    <div class="col-12 w-auto">
+        <h1 class="display-3 text-light text-center"><strong>{{heading}}</strong></h1>
+        <p class="lead text-light text-center">{{subheading}}</p>
+    </div>
+</div>
+{% endblock header %}
+{% block content %}
+<div class="row m-5">
+    <div class="col-12">
+        <h2 class="display-4 mt-4">Detail motor</h2>
+        <p>Silahkan perhatikan detail sebelum menyewa motor.</p>
+    </div>
+</div>
+<div class="container p-2 mb-4 shadow">
+    <div class="container text-center text-lg-left">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="display-5 mt-4">{{motor.merk_mtr}} {{motor.nama_mtr}}</h2>
+                <p class="lead">{{motor.warna_mtr}} - No Plat. ( {{motor.plat_mtr}} ) </p>
+                <span>
+                    <p>
+                        {{motor.tentang_mtr}}
+                    </p>
+                </span>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Warna motor</th>
+                            <th>Tahun motor</th>
+                            <th>Status Saat ini</th>
+                            <th>Harga /hari</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><button class="btn btn-outline-dark disabled btn-sm">{{motor.warna_mtr}}</button></td>
+                            <td><i class="fa fa-calendar mr-2" aria-hidden="true"></i>{{motor.tahun_mtr}}</td>
+                            <td><button class="btn btn-outline-success active btn-sm">{{motor.status_mtr}}</button></td>
+                            <td><i class="fas fa-money-bill-wave mr-2"></i><strong>Rp. {{harga}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span class="text-center d-inline-block">
+                    <a class="btn btn-primary btn-lg w-100" href="#" role="button">Sewa motor</a>
+                    <p class="text-muted"> * Syarat dan Ketentuan Berlaku. <a href="#">Lihat Disini</a></p>
+                </span>
+            </div>
+            <div class="col-lg-4 align-items-center d-flex">
+                <img src="{{motor.foto_mtr.url}}" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

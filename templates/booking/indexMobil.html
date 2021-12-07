@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+
+{{title}}
+{% block stylesheet %}
+
+<link rel="stylesheet" href="{% static 'booking/css/jumbotron.css' %}" />
+
+{% endblock stylesheet %}
+
+
+{% endblock title %}
+{% block header %}
+<div class="row m-auto ">
+  <div class="col-12 w-auto">
+    <h1 class="display-3 text-light text-center"><strong>{{heading}}</strong></h1>
+    <p class="lead text-light text-center">{{subheading}}</p>
+  </div>
+</div>
+{% endblock header %}
+{% block content %}
+<div class="row m-5">
+  <div class="col-12 text-center">
+    <h2 class="display-4 mt-4">Detail Mobil</h2>
+    <p>Silahkan perhatikan detail sebelum menyewa mobil.</p>
+  </div>
+</div>
+<div class="row ">
+  <div class="col-lg-7 mx-auto">
+    <div class="card mt-2 mx-auto p-4 bg-light">
+      <div class="card-body bg-light">
+        <div class="container">
+          <form method="post" id="contact-form" role="form">
+            {% csrf_token %}
+            <div class="controls">
+              <h5>Detail Pesanan</h5>
+              <hr>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="form_tglSewa">Tanggal Sewa Mobil *</label>
+                    <input id="form_tglSewa" type="date" name="tgl_sewa" class="form-control" required="required"
+                      data-error="Mohon isi form ini">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="form_need">Sewa berapa hari?</label>
+                    <select id="form_need" name="lama_sewa" class="form-control">
+                      <option value="" disabled>#Saat ini hanya tersedia 1 hari</option>
+                      <option value="1" selected>1 Hari</option>
+                      <option value="2" disabled> 2 Hari</option>
+                      <option value="3" disabled> 3 Hari</option>
+                      <option value="7" disabled> 1 Minggu</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="form_nohp">No. Handphone (Alternatif)</label>
+                    <input id="form_nohp" type="text" name="no_hp" class="form-control"
+                      placeholder="No yang dapat dihubungi">
+                    <small class="text-muted">Dapat dikosongkan bila nomor sudah terdaftar di akun (opsional)</small>
+                  </div>
+                </div>
+              </div>
+              <h5 class="mt-4">Detail Pembayaran</h5>
+              <hr>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="form_nama_bank">Bank yang dipakai *</label>
+                    <input id="form_nama_bank" type="text" name="nama_bank" class="form-control"
+                      placeholder="Nama Bank">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="form_anBank">Nama Pemilik Rekening *</label>
+                    <input id="form_anBank" type="text" name="atas_nama_bank" class="form-control"
+                      placeholder="Atas Nama Rekening ">
+                  </div>
+                </div>
+                <div class="col-md-12 mt-4">
+                  <strong class="h5"> Total Bayar (DP 25%) : <button type="button" class="btn btn-dark disabled"> Rp {{totalBayar}} </button></strong> <br>
+
+                  <small>Total Pembayaran sebesar 25% harga sewa sebagai DP Booking! Sisa pembayaran 75% dapat dilunasi di tempat rental. Ketentuan ini dapat dibaca dalam <a href="">Ketentuan Layanan</a></small>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group"> <label for="form_message">Pesan untuk admin :</label> <textarea
+                      id="form_message" name="message" class="form-control"
+                      placeholder="Tinggalkan pesan.. * dapat dikosongkan" rows="4" required="required"
+                      data-error="Please, leave us a message."></textarea> </div>
+                </div>
+                <div class="col-md-12">
+                  <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Lanjut Ke Pembayaran">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> <!-- /.8 -->
+  </div> <!-- /.row-->
+  {% endblock content %}

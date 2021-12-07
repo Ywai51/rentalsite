@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'mobil/css/jumbotron.css' %}" />
+{% endblock stylesheet %}
+
+
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block header %}
+<div class="row m-auto ">
+    <div class="col-12 w-auto">
+        <h1 class="display-3 text-light text-center"><strong>{{heading}}</strong></h1>
+        <p class="lead text-light text-center">{{subheading}}</p>
+    </div>
+</div>
+{% endblock header %}
+{% block content %}
+<div class="row m-5">
+    <div class="col-12">
+        <h2 class="display-4 mt-4">Detail Mobil</h2>
+        <p>Silahkan perhatikan detail sebelum menyewa mobil.</p>
+    </div>
+</div>
+<div class="container p-2 mb-4 shadow">
+    <div class="container text-center text-lg-left">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="display-5 mt-4">{{mobil.merk_mbl}} {{mobil.nama_mbl}}</h2>
+                <p class="lead">{{mobil.warna_mbl}} - No Plat. ( {{mobil.plat_mbl}} ) </p>
+                <span>
+                    <p>
+                        {{mobil.tentang_mbl}}
+                    </p>
+                </span>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Warna Mobil</th>
+                            <th>Tahun Mobil</th>
+                            <th>Status Saat ini</th>
+                            <th>Harga /hari</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><button class="btn btn-outline-dark disabled btn-sm">{{mobil.warna_mbl}}</button></td>
+                            <td><i class="fa fa-calendar mr-2" aria-hidden="true"></i>{{mobil.tahun_mbl}}</td>
+                            <td><button class="btn btn-outline-success active btn-sm">{{mobil.status_mbl}}</button></td>
+                            <td><i class="fas fa-money-bill-wave mr-2"></i><strong>Rp. {{harga}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <span class="text-center d-inline-block">
+                    <a class="btn btn-primary btn-lg w-100" href="{% url 'booking:mobil' claimInput=mobil.slug %}" role="button">Sewa Mobil</a>
+                    <p class="text-muted"> * Syarat dan Ketentuan Berlaku. <a href="#">Lihat Disini</a></p>
+                </span>
+            </div>
+            <div class="col-lg-4 align-items-center d-flex">
+                <img src="{{mobil.foto_mbl.url}}" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

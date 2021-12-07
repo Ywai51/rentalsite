@@ -8,4 +8,6 @@ from . import views
 
 urlpatterns = [
     path("", views.index , name="index"),
+    path('about/<slug:slugInput>/', views.aboutMtr, name="aboutMotor"),
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
