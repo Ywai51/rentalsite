@@ -12,7 +12,7 @@ def index(request):
     p = Paginator(mobil.objects.all(), 2)
     page = request.GET.get('page')
     mbl = p.get_page(page)
-
+    
     context = {
         'title':"Rental Mobil Page | R2M",
         'heading':"Halaman Rental Mobil",
@@ -23,7 +23,6 @@ def index(request):
     return render(request, 'mobil/index.html',context)
 
 def aboutMbl(request, slugInput):
-    messages.info(request, 'Anda Harus Login sebagai Pengguna web untuk Booking!')
     mbl = mobil.objects.get(slug=slugInput)
     context = {
         'title':"Detail Mobil | R2M",
@@ -35,3 +34,4 @@ def aboutMbl(request, slugInput):
         #'user_group' : request.user.groups.all()
     }
     return render(request, 'mobil/aboutMobil.html',context)
+ 
