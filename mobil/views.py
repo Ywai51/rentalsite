@@ -10,6 +10,12 @@ from django.contrib import messages
 
 def index(request):
     p = Paginator(mobil.objects.all(), 2)
+    kat = 'Filter Jenis Mobil'
+    #FILTER Jenis mobil
+    if request.method == "POST":
+        kat = request.POST['kategori']
+        p = Paginator(mobil.objects.filter(kategori_mbl=kat), 2)
+        
     page = request.GET.get('page')
     mbl = p.get_page(page)
     
@@ -18,7 +24,7 @@ def index(request):
         'heading':"Halaman Rental Mobil",
         'subheading':"Rental Mobil dari yang terbaik sampai yang termewah!",
         'mbl' : mbl,
-        
+        'kategori' : kat
     }
     return render(request, 'mobil/index.html',context)
 
@@ -30,8 +36,6 @@ def aboutMbl(request, slugInput):
         'subheading' : 'Perhatikan Detail Mobil Yang akan disewa di halaman ini.',
         'mobil' : mbl,
         'harga' : format(mbl.harga_mbl, ',')
-        #'test_group' : Group.objects.get(name='Paus'),
-        #'user_group' : request.user.groups.all()
     }
     return render(request, 'mobil/aboutMobil.html',context)
  
