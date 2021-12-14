@@ -1,14 +1,19 @@
 <div class="fabs" onclick="toggleBtn()">
   <div class="fab-action">
-    <i class="fas fa-plus" id="add"></i>
-    <i class="fas fa-times" id="remove" style="display: none"></i>
+    <i title="Hubungi Kami" class="fas fa-headset" id="add"></i>
+    <i title="Close" class="fas fa-times" id="remove" style="display: none"></i>
   </div>
 
   <div class="btns">
-    <a href="#" class="fab-btn" style="background: #3b5999"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" class="fab-btn" style="background: #55acee"><i class="fab fa-twitter"></i></a>
-    <a href="#" class="fab-btn" style="background: #25d366"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/yunas.an/" target="_blank" class="fab-btn" style="background: #e4405f"><i
-        class="fab fa-instagram"></i></a>
+    <a title="Lihat Syarat dan Ketentuan" href="{% url 'home:snk' %}" class="fab-btn" style="background: #55acee"><i
+        class="fas fa-file-contract"></i></a>
+    <a title="Akun Facebook Kami" href="#" class="fab-btn" style="background: #3b5999"><i
+        class="fab fa-facebook-f"></i></a>
+    <a title="Whatsapp Kami" href="#" class="fab-btn" style="background: #25d366"><i class="fab fa-whatsapp"></i></a>
+    <a title="Instagram Kami" href="https://www.instagram.com/yunas.an/" target="_blank" class="fab-btn"
+      style="background: #e4405f">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a title="Kirim Email" href="mailto:anyunas38@gmail.com" class="fab-btn" style="background: #FA4C3B"><i class="far fa-envelope"></i></a>
   </div>
 </div>

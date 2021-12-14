@@ -4,7 +4,7 @@ $(window).scroll(
 
         document.getElementById("body1").style.marginTop = (-100 - 0.5*scroll) + "px";
         
-        if (scroll > 150) {
+        if (scroll > 100) {
             $("#navbarku").addClass("bg-primary");
         }else{
             $("#navbarku").removeClass("bg-primary");

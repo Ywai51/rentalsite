@@ -3,6 +3,14 @@
 
 {% block stylesheet %}
 <link rel="stylesheet" href="{% static 'akun/css/jumbotron.css' %}" />
+<!-- Tambahan scripts -->
+<script>
+    {% if messages %} 
+        {% for message in messages %}
+            alert('{{message}}') 
+        {%endfor %} 
+    {% endif %}
+</script>
 {% endblock stylesheet %}
 
 {% block title %}
@@ -12,7 +20,7 @@
 {% block header %}
 <div class="row m-auto ">
     <div class="col-12 w-auto">
-        <h1 class="display-3 text-light text-center"><strong>{{heading}}</strong></h1>
+        <h1 class="display-3 text-light text-center"><strong>{{heading}} {{akun.nama}}</strong></h1>
         <p class="lead text-light text-center">{{subheading}}</p>
     </div>
 </div>
@@ -38,10 +46,46 @@
 
             <li class="list-group-item disabled">Tanggal bergabung : {{akun.tanggal_akun}}</li>
             <li class="list-group-item inline">
-                <button type="button" class="btn btn-primary"><i class="fas fa-edit mr-1"></i>Ubah No.
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nohpModal"><i class="fas fa-edit mr-1"></i>Ubah No.
                     Handphone</button>
                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#logoutModal"><i
                         class="fas fa-sign-out-alt mr-1"></i>Log Out</button>
+
+
+                <!-- Edit Nomor MODAL-->
+                <div class="modal fade" id="nohpModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <form method="post">
+                                {% csrf_token %}
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Edit No. Handphone</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="alert alert-warning" role="alert">
+                                    <small> Nomor handphone berguna agar kami dapat menghubungi anda dengan mudah. Mohon selalu update nomor terbaru anda! </small>
+                                </div>
+                                <label for="#nolama">Nomor Lama :</label>
+                                <input class="form-control" value="{{akun.no_hp}}" type="text" readonly name="nolama" id="nolama">
+                                <label class="mt-2" for="#nolama">Masukkan nomor baru dibawah ini :</label>
+                                <input class="form-control" type="text" name="nobaru" id="nobaru">
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Kembali</button>
+                                <button type="submit" name="modalBtn" value="ubahnomor" class="btn btn-primary">Submit</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
 
                 <!-- LOG OUT Modal -->
                 <div class="modal fade" id="logoutModal">
@@ -56,17 +100,22 @@
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                                Halo, {{akun.nama}} <br>
-                                Apakah Anda Yakin Ingin Keluar ?
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>Halo, {{akun.nama}} <br>
+                                        Apakah Anda Yakin Ingin Keluar ?</strong>
+                                </div>
+                                
                             </div>
 
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Tidak / Kembali</button>
+                                <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Tidak /
+                                    Kembali</button>
 
                                 <form method="post">
-                                {% csrf_token %}
-                                    <button type="submit" name="logout" value="yes" class="btn btn-danger">Iya / Keluar</button>
+                                    {% csrf_token %}
+                                    <button type="submit" name="modalBtn" value="yes" class="btn btn-danger">Iya /
+                                        Keluar</button>
                                 </form>
                             </div>
                         </div>
@@ -76,31 +125,66 @@
         </ul>
     </div>
 </div>
-
 <div class="row">
-    <div class="col">
-        <button class="btn btn-warning btn-block"><i class="fas fa-th-list mr-1"></i>List Pesanan</button>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td scope="row"></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td scope="row"></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="col mb-3">
+        <ul>
+            <li>
+                <p><small>Tekan tombol <strong>List Pesanan</strong> dibawah untuk melihat pesanan yang sudah pernah dilakukan</small></p>
+            </li>
+        </ul>
+        <button id="pesanan" class="btn btn-warning btn-block"><i class="fas fa-th-list mr-1"></i>List Pesanan</button>
+        <div id="listPesanan">
+            <div class="row m-2">
+                <div class="col-md-6">
+                    <h5 class="text-center">Pesanan Mobil</h5>
+                    <table class="table table-striped  bg-primary rounded">
+                        <thead>
+                            <tr>
+                                <th>Tanggal sewa</th>
+                                <th>Mobil</th>
+                                <th>Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pesananMbl in pesananMbl %}
+                                <tr>
+                                    <td scope="row">{{pesananMbl.tgl_booking_mbl}}</td>
+                                    <td>{{pesananMbl.id_mobil}}</td>
+                                    <td>{{pesananMbl.total_sewa_mbl}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-center">Pesanan Motor</h5>
+                    <table class="table table-striped  bg-primary rounded">
+                        <thead>
+                            <tr>
+                                <th>Tanggal sewa</th>
+                                <th>Motor</th>
+                                <th>Harga</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for pesananMtr in pesananMtr %}
+                                <tr>
+                                    <td scope="row">{{pesananMtr.tgl_booking_mtr}}</td>
+                                    <td>{{pesananMtr.id_motor}}</td>
+                                    <td>{{pesananMtr.total_sewa_mtr}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>
+
 {% endblock content %}
+
+{% block scriptsheet %}
+<script src="{% static 'akun/js/pesananscript.js' %}"></script>
+{% endblock scriptsheet %}

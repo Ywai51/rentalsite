@@ -22,8 +22,8 @@
 {% block content %}
 <div class="row m-5">
   <div class="col-12 text-center">
-    <h2 class="display-4 mt-4">Detail Mobil</h2>
-    <p>Silahkan perhatikan detail sebelum menyewa mobil.</p>
+    <h2 class="display-4 mt-4">Detail Pesanan</h2>
+    <p>Silahkan isi detail pesananan mobil dibawah ini.</p>
   </div>
 </div>
 <div class="row ">
@@ -87,7 +87,7 @@
                 <div class="col-md-12 mt-4">
                   <strong class="h5"> Total Bayar (DP 25%) : <button type="button" class="btn btn-dark disabled"> Rp {{totalBayar}} </button></strong> <br>
 
-                  <small>Total Pembayaran sebesar 25% harga sewa sebagai DP Booking! Sisa pembayaran 75% dapat dilunasi di tempat rental. Ketentuan ini dapat dibaca dalam <a href="">Ketentuan Layanan</a></small>
+                  <small>Total Pembayaran sebesar 25% harga sewa sebagai DP Booking! Sisa pembayaran 75% dapat dilunasi di tempat rental. Ketentuan ini dapat dibaca dalam <a href="{% url 'home:snk' %}">Ketentuan Layanan</a></small>
                 </div>
               </div>
               <hr>

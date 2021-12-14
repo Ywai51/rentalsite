@@ -51,7 +51,7 @@
             </ul>
             <div class="card-body">
                 <a href="{% url 'motor:aboutMotor' slugInput=motor.slug %}" class="btn btn-warning"><i class="fas fa-file-invoice mr-1"></i>Detail</a>
-                <a href="#" class="btn btn-success"><i class="fas fa-tags mr-1"></i>Pesan</a>
+                <a href="{% url 'booking:motor' claimInput=motor.slug %}" class="btn btn-success"><i class="fas fa-tags mr-1"></i>Pesan</a>
             </div>
         </div>
     </div>

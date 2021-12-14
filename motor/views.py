@@ -24,7 +24,6 @@ def index(request):
 
 
 def aboutMtr(request, slugInput):
-    messages.info(request, 'Anda Harus Login sebagai Pengguna web untuk Booking!')
     mtr = motor.objects.get(slug=slugInput)
     context = {
         'title':"Detail Motor | R2M",
