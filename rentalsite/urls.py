@@ -8,4 +8,5 @@ urlpatterns = [
     path("booking/", include(('booking.urls', 'booking'), namespace="booking")),
     path('mobil/', include(('mobil.urls', 'mobil'),namespace='mobil')),
     path('motor/', include(('motor.urls', 'motor'),namespace='motor')),
+    
 ]
