@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{title}}
+{% endblock title %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="{% static 'home/css/searchjumbotron.css' %}" />
+{% endblock stylesheet %}
+
+
+{% block header %}
+<div class="row m-auto ">
+    <div class="col-12 w-auto">
+        <h1 class="display-3 text-light text-center"><strong>{{heading}}</strong></h1>
+        <p class="lead text-light text-center">{{subheading}}"{{value}}"</p>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="row m-5">
+    <div class="col-12">
+        <h2 class="display-4 mt-4">Hasil pencarian:</h2>
+        <p>Kata kunci "{{value}}"</p>
+    </div>
+</div>
+<div class="row m-4 px-4">
+    <div class="col-md-12">
+    {% if listMobil or listMotor %}
+        {% if listMobil %}
+        <h5>List Mobil</h5>
+        {% for mobil in listMobil %}
+        <div class="card mb-4" style="width: 18rem;">
+            <img src="{{mobil.foto_mbl.url}}" class="card-img-top" alt="Foto {{mobil.nama_mbl}}">
+            <div class="card-body">
+                <h5 class="card-title">{{mobil.nama_mbl}}</h5>
+                <p class="card-text text-secondary">{{mobil.tentang_mbl}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i class="fab fa-slack-hash mr-1"></i>
+                    <button class="btn btn-outline-success active btn-sm">{{mobil.status_mbl}}</button></li>
+                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp {{mobil.harga_mbl}} /hari</li>
+            </ul>
+            <div class="card-body">
+                <a href="{% url 'mobil:aboutMobil' slugInput=mobil.slug %}" class="btn btn-warning"><i
+                        class="fas fa-file-invoice mr-1"></i>Detail</a>
+                <a href="{% url 'booking:mobil' claimInput=mobil.slug %}" class="btn btn-success"><i
+                        class="fas fa-tags mr-1"></i>Pesan</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if listMotor %}
+        <h5>List Motor</h5>
+        {% for motor in listMotor %}
+        <div class="card mb-4" style="width: 18rem;">
+            <img src="{{motor.foto_mtr.url}}" class="card-img-top" alt="Foto {{motor.nama_mtr}}">
+            <div class="card-body">
+                <h5 class="card-title">{{motor.nama_mtr}}</h5>
+                <p class="card-text text-secondary">{{motor.tentang_mtr}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><i class="fab fa-slack-hash mr-1"></i>
+                    <button class="btn btn-success active btn-sm">{{motor.status_mtr}}</button></li>
+                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp {{motor.harga_mtr}} /hari</li>
+            </ul>
+            <div class="card-body">
+                <a href="{% url 'motor:aboutMotor' slugInput=motor.slug %}" class="btn btn-warning"><i
+                        class="fas fa-file-invoice mr-1"></i>Detail</a>
+                <a href="{% url 'booking:motor' claimInput=motor.slug %}" class="btn btn-success"><i
+                        class="fas fa-tags mr-1"></i>Pesan</a>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+            <h3>Maaf.. </h3>
+            <h4>Kendaraan yang dicari tidak ditemukan!</h4>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

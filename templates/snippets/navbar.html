@@ -29,8 +29,9 @@
             </ul>
             <ul class="navbar-nav ml-lg-auto mr-1">
                 <li class="nav-item">
-                    <form class="form-inline ">
-                        <input class="form-control " type="search" placeholder="Cari Motor/Mobil" aria-label="Search">
+                    <form class="form-inline" method="get" action="{% url 'home:search' %}">
+                        {% csrf_token %}
+                        <input name="search" class="form-control " type="search" placeholder="Cari Motor/Mobil" aria-label="Search">
                         <button class="btn btn-outline-light my-lg-2 ml-lg-1" type="submit"><i
                                 class="fas fa-search"></i></button>
                     </form>
