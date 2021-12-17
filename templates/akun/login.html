@@ -9,6 +9,9 @@
             alert('{{message}}') 
         {%endfor %} 
     {%endif %}
+    {% if error %}
+        alert("[Form tidak valid] \n\n GAGAL MENDAFTAR! Mohon isi form dengan benar! \n\n (Perhatikan error yang ada diatas form)")
+    {% endif %}
 </script>
 {% endblock stylesheet %}
 
@@ -27,6 +30,7 @@
 {% endblock header %}
 
 {% block content %}
+
 
 <div class="container mt-3">
     <br>
@@ -49,10 +53,34 @@
         <div id="register" class="container tab-pane active"><br>
             <h3>Register</h3>
             <br>
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>COBA LAGI!, MOHON ISIKAN FORM DENGAN BENAR!</strong><br>
+                    <strong>Form tidak valid : Silahkan benahi error dibawah ini</strong>
+                    <p>{{error}}</p>
+                </div>
+            {% endif %}
             <form method="post"> 
                 {% csrf_token %}
-                {{akunform}}
-                <button type="submit" name="submit" class="col-md-6 mb-3 btn btn-primary" value="daftar">Daftar</button>
+                {% for field in akunform %}
+                <div class="mb-2">
+                    <label class="form-label" for="">{{field.label}}</label>
+                    {{field}}
+                </div>
+                {% endfor %}
+                <div class="alert alert-warning" role="alert">
+                    <strong>
+                        Password Harus :
+                    </strong>
+                    <p>
+                        <ul>
+                            <li>Minimal 8 Karakter</li>
+                            <li>Memiliki kombinasi Huruf dan Angka</li>
+                            <li>Tidak boleh sama dengan username</li>
+                        </ul>
+                    </p>
+                </div>
+                <button type="submit" name="submit" class="col-md-12 mb-3 btn btn-primary" value="daftar">Daftar</button>
             </form>
         </div>
 

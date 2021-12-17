@@ -8,7 +8,15 @@ class FormAkun(UserCreationForm):
     class Meta:
         model = NewAkun
         fields = ['email','nama','no_hp','password1','password2']
-
+        
+    def clean(self):
+        cd = self.cleaned_data
+        if cd.get('password1') != cd.get('password2'):
+            self.add_error('password2', "Konfirmasi password tidak sama!")
+        if NewAkun.objects.filter(email=cd.get('email')).exists():
+            self.add_error('email', "Email ini sudah pernah digunakan!")
+        return cd
+    
     def __init__(self, *args, **kwargs):
             super(FormAkun, self).__init__(*args, **kwargs)
             self.fields['email'].widget.attrs.update({'placeholder': 'Masukkan Email ','class':'form-control',})

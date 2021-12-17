@@ -43,6 +43,7 @@ def index(request):
         return redirect('akun:login')
     
 def loginView(request):
+    error_list = None
     form = FormAkun()
     if request.method == 'POST':
         if request.POST.get('submit') == 'daftar':
@@ -52,8 +53,7 @@ def loginView(request):
                 messages.success(request, "SELAMAT! Anda Berhasil Mendaftar, untuk masuk ke website silahkan menuju menu Login.")
                 return redirect('akun:index')
             else:
-                error_list = account_form.errors.as_data()
-                messages.error(request, error_list)
+                error_list = account_form.errors
 
         if request.POST.get('submit') == 'masuk':
             username = request.POST['emailform']
@@ -72,7 +72,8 @@ def loginView(request):
         'title':"Akun login | R2M",
         'heading':"Anda Belum Masuk Website!",
         'subheading':"Silahkan Masuk / Mendaftar dibawah.",
-        'akunform': form
+        'akunform': form,
+        'error': error_list
     }
     
     return render(request, 'akun/login.html',context)
