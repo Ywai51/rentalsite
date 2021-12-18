@@ -50,4 +50,4 @@ class bookMotor(models.Model):
     status_sewa_mtr     = models.CharField(verbose_name="Status Sewa Motor",choices=status, max_length=500, default="Dipesan" ,unique=False)
     
     def __str__(self):
-        return "{} - {}".format(self.id,self.id_mobil,self.id_penyewa_mtr)
+        return "{} - {}".format(self.id,self.id_motor,self.id_penyewa_mtr)

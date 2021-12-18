@@ -2,9 +2,8 @@
 {% load static %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="{% static 'mobil/css/jumbotron.css' %}" />
+<link rel="stylesheet" href="{% static 'motor/css/jumbotron.css' %}" />
 {% endblock stylesheet %}
-
 
 {% block title %}
 {{title}}
@@ -19,10 +18,11 @@
 </div>
 {% endblock header %}
 {% block content %}
+
 <div class="row m-5">
     <div class="col-12">
-        <h2 class="display-4 mt-4">Halaman Mobil</h2>
-        <p>Silahkan pilih mobil yang tersedia</p>
+        <h2 class="display-4 mt-4">Halaman Motor</h2>
+        <p>Silahkan pilih motor yang tersedia </p>
         <form class="form-inline" method="POST">
             {% csrf_token %}
             <label for="kategori" class="mr-sm-2"><strong>Kategori :</strong></label>
@@ -30,7 +30,9 @@
                 <option selected disabled value=''> --{{kategori}}-- </option>
                 <option value="Matic">Matic</option>
                 <option value="Manual">Manual</option>
-                <option value="Hybrid">Hybrid</option>
+                <option value="Kopling">Kopling</option>
+                <option value="Semua">Semua Kategori</option>
+
             </select>
             <button disabled="true" name="kategoriBtn" type="submit" class="btn btn-primary ml-2"><i
                     class="fas fa-filter mr-1"></i> Filter</button>
@@ -38,49 +40,50 @@
     </div>
 </div>
 <div class="row m-4 px-4">
-    {% for mobil in mbl %}
+    {% for motor in mtr %}
     <div class="col-lg-4">
         <div class="card mb-4" style="width: 18rem;">
-            <img src="{{mobil.foto_mbl.url}}" class="card-img-top" alt="Foto {{mobil.nama_mbl}}">
+            <img src="{{motor.foto_mtr.url}}" class="card-img-top" alt="Foto {{motor.nama_mtr}}">
             <div class="card-body">
-                <h5 class="card-title">{{mobil.merk_mbl}} {{mobil.nama_mbl}}</h5>
-                <p style="max-width: 200px;" class="card-text text-secondary">{{mobil.tentang_mbl|truncatewords:15}} <a
-                        class="text-secondary" href="{% url 'mobil:aboutMobil' slugInput=mobil.slug %}">Selengkapnya</a>
+                <h5 class="card-title">{{motor.merk_mtr}} {{motor.nama_mtr}}</h5>
+                <p style="max-width: 200px;" class="card-text text-secondary">{{motor.tentang_mtr|truncatewords:15}} <a
+                        class="text-secondary" href="{% url 'motor:aboutMotor' slugInput=motor.slug %}">Selengkapnya</a>
                 </p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="fab fa-slack-hash mr-1"></i>
-                    <button class="btn btn-outline-success active btn-sm">{{mobil.status_mbl}}</button></li>
-                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp {{mobil.harga_mbl}} /hari</li>
+                    <button class="btn btn-success active btn-sm">{{motor.status_mtr}}</button></li>
+                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp {{motor.harga_mtr}} /hari</li>
             </ul>
             <div class="card-body">
-                <a href="{% url 'mobil:aboutMobil' slugInput=mobil.slug %}" class="btn btn-warning"><i
+                <a href="{% url 'motor:aboutMotor' slugInput=motor.slug %}" class="btn btn-warning"><i
                         class="fas fa-file-invoice mr-1"></i>Detail</a>
-                <a href="{% url 'booking:mobil' claimInput=mobil.slug %}" class="btn btn-success"><i
+                <a href="{% url 'booking:motor' claimInput=motor.slug %}" class="btn btn-success"><i
                         class="fas fa-tags mr-1"></i>Pesan</a>
             </div>
         </div>
     </div>
     {% endfor %}
+
     <div class="col-12">
-        <h6 class="text-secondary p-2 justify-content-center">{{mbl}}</h6>
+        <h6 class="text-secondary p-2 justify-content-center">{{mtr}}</h6>
         <div class="pb-0 alert alert-secondary" role="alert">
             <nav aria-label="...">
                 <ul class="pagination justify-content-center">
-                    {% if mbl.has_previous %}
+                    {% if mtr.has_previous %}
                     <li class="page-item">
-                        <a class="page-link " href="?page={{mbl.previous_page_number}}"> <i
+                        <a class="page-link " href="?page={{mtr.previous_page_number}}"> <i
                                 class="fas fa-chevron-left"></i>
                             Previous</a>
                     </li>
                     {% endif %}
 
-                    {% for pageNum in mbl.paginator.page_range %}
-                    {% if mbl.number == pageNum %}
+                    {% for pageNum in mtr.paginator.page_range %}
+                    {% if mtr.number == pageNum %}
                     <li class="page-item active">
-                        <a class="page-link" href="?page={{mbl.number}}">{{mbl.number}}</a>
+                        <a class="page-link" href="?page={{mtr.number}}">{{mtr.number}}</a>
                     </li>
-                    {% elif pageNum > mbl.number|add:'-3' and pageNum < mbl.number|add:'3' %}
+                    {% elif pageNum > mtr.number|add:'-3' and pageNum < mtr.number|add:'3' %}
 
                     <li class="page-item">
                         <a class="page-link " href="?page={{pageNum}}"> {{pageNum}} </a>
@@ -89,9 +92,9 @@
                     {% endif %}
                     {% endfor %}
 
-                    {% if mbl.has_next %}
+                    {% if mtr.has_next %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{mbl.next_page_number}}"> Next <i
+                        <a class="page-link" href="?page={{mtr.next_page_number}}"> Next <i
                                 class="fas fa-chevron-right"></i> </a>
                     </li>
                     {% endif %}
@@ -101,7 +104,10 @@
 
     </div>
 </div>
+
+
 {% endblock content %}
+
 {% block scriptsheet %}
 <script src="{% static 'mobil/js/filter.js' %}"></script>
 {% endblock scriptsheet %}

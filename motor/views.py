@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import motor
 
 from django.core.paginator import Paginator
@@ -10,16 +10,16 @@ from django.contrib import messages
 # Create your views here.
 
 def index(request):
-    p = Paginator(motor.objects.all(), 2)
-    kat = 'Filter Jenis Motor'
-    #FILTER Jenis motor
-    if request.method == "POST":
-        kat = request.POST['kategori']
-        p = Paginator(motor.objects.filter(kategori_mtr=kat), 2)
-        
+    kat = None
+    p = Paginator(motor.objects.all(), 3)
     page = request.GET.get('page')
     mtr = p.get_page(page)
 
+    #FILTER Jenis motor
+    if request.method == "POST":
+        kat = request.POST['kategori']
+        return redirect('motor:kategoriMotor', slugInput=kat)
+    
     context = {
         'title':"Rental Motor Page | R2M",
         'heading':"Halaman Rental Motor",
@@ -28,6 +28,32 @@ def index(request):
         'kategori':kat
     }
     return render(request, 'motor/index.html',context)
+
+
+def kategoriMtr(request, slugInput):
+    kat = slugInput
+
+    #FILTER Jenis mobil
+    if request.method == "POST":
+        kat = request.POST['kategori']
+        if kat == 'Semua':
+            return redirect('motor:index')
+
+        return redirect('motor:kategoriMotor', slugInput=kat)
+
+    p = Paginator(motor.objects.filter(kategori_mtr=kat), 3)
+    page = request.GET.get('page')
+    mtr  = p.get_page(page)
+    
+    context = {
+        'title':"Rental Mobil Page | R2M",
+        'heading':"Halaman Rental Mobil",
+        'subheading':"Rental Mobil dari yang terbaik sampai yang termewah!",
+        'mtr' : mtr,
+        'kategori' : kat
+    }
+    return render(request, 'motor/sortMotor.html',context)
+
 
 def aboutMtr(request, slugInput):
     mtr = motor.objects.get(slug=slugInput)

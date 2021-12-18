@@ -9,5 +9,6 @@ from . import views
 urlpatterns = [
     path("", views.index , name="index"),
     path('about/<slug:slugInput>/', views.aboutMtr, name="aboutMotor"),
+    path('kategori/<slug:slugInput>/', views.kategoriMtr, name="kategoriMotor"),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
