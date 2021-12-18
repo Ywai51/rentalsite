@@ -5,6 +5,7 @@
 <head>
   {% include "snippets/meta.html" %}
   {% include "snippets/styles.html" %}
+ 
   {% block stylesheet %}
   {% endblock stylesheet %}
 
@@ -13,7 +14,6 @@
 </head>
 
 <body>
-  <div id="loader"></div>
   {% include "snippets/navbar.html" %}
 
   <div class="jumbotron m-0" id="jumbrotron-img">
@@ -36,7 +36,6 @@
 </body>
 
 {% include "snippets/script.html" %}
-
 {% block scriptsheet %}
 {% endblock scriptsheet %}
 
