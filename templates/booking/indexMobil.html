@@ -4,7 +4,13 @@
 
 {{title}}
 {% block stylesheet %}
-
+<script>
+  {% if messages %} 
+      {% for message in messages %}
+          alert('{{message}}') 
+      {%endfor %} 
+  {% endif %}
+</script>
 <link rel="stylesheet" href="{% static 'booking/css/jumbotron.css' %}" />
 
 {% endblock stylesheet %}

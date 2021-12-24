@@ -26,19 +26,23 @@ def mblBooking(request, claimInput):
         bank    = request.POST['nama_bank']
         anBank  = request.POST['atas_nama_bank']
         note    = request.POST['message']
+        
+        if bookMobil.objects.filter(id_mobil = mobil, tgl_booking_mbl = tgl).exists():
+            messages.error(request, "Mobil ini telah dibooking pada tanggal yang dipilih, Mohon ganti tanggal atau memesan mobil yang lain. Terimakasih!")
 
-        bookMobil.objects.create(
-            id_mobil = mobil,
-            id_penyewa_mbl = user, 
-            tgl_booking_mbl = tgl,
-            waktu_booking_mbl = lama,
-            no_alternatif_mbl = nohp,
-            total_sewa_mbl = mobil.harga_mbl,
-            nama_bank_mbl = bank,
-            atas_nama_mbl = anBank,
-            note_mbl    = note
-            )
-        return redirect('akun:index')
+        else:
+            bookMobil.objects.create(
+                id_mobil = mobil,
+                id_penyewa_mbl = user, 
+                tgl_booking_mbl = tgl,
+                waktu_booking_mbl = lama,
+                no_alternatif_mbl = nohp,
+                total_sewa_mbl = mobil.harga_mbl,
+                nama_bank_mbl = bank,
+                atas_nama_mbl = anBank,
+                note_mbl    = note
+                )
+            return redirect('akun:index')
 
     context = {
         'title':"Booking Mobil | R2M",
@@ -68,18 +72,22 @@ def mtrBooking(request, claimInput):
         anBank  = request.POST['atas_nama_bank']
         note    = request.POST['message']
 
-        bookMotor.objects.create(
-            id_motor = motor,
-            id_penyewa_mtr = user, 
-            tgl_booking_mtr = tgl,
-            waktu_booking_mtr = lama,
-            no_alternatif_mtr = nohp,
-            total_sewa_mtr = motor.harga_mtr,
-            nama_bank_mtr = bank,
-            atas_nama_mtr = anBank,
-            note_mtr    = note
-            )
-        return redirect('akun:index')
+        if bookMotor.objects.filter(id_motor = motor, tgl_booking_mtr = tgl).exists():
+            messages.error(request, "Motor ini telah dibooking pada tanggal yang dipilih, Mohon ganti tanggal atau memesan motor yang lain.  Terimakasih!")
+
+        else:
+            bookMotor.objects.create(
+                id_motor = motor,
+                id_penyewa_mtr = user, 
+                tgl_booking_mtr = tgl,
+                waktu_booking_mtr = lama,
+                no_alternatif_mtr = nohp,
+                total_sewa_mtr = motor.harga_mtr,
+                nama_bank_mtr = bank,
+                atas_nama_mtr = anBank,
+                note_mtr    = note
+                )
+            return redirect('akun:index')
 
     context = {
         'title':"Booking Motor | R2M",

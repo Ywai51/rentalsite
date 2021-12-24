@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from mobil.models import mobil
 from motor.models import motor
@@ -6,8 +7,8 @@ from django.db.models import Q
 def index(request):
     context = {
         'title':"R2M | Rental Mobil-Motor",
-        'heading':"Selamat datang user!",
-        'subheading':"Baru pertama kali kemari? silahkan daftar disini. Atau login jika sudah mempunyai akun."
+        'heading':"Selamat Datang",
+        'subheading':"Sewa Mobil dan Motor menjadi mudah dengan web rental kami! Hanya bayar 25% untuk booking!"
     }
     return render(request, 'home/index.html',context)
 

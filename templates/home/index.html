@@ -17,7 +17,12 @@
 <div class="row m-auto ">
   <div class="col-12 w-auto">
     <h1 class="display-3 text-light text-center"><strong>{{heading}}</strong></h1>
+    {% if user.is_authenticated %}
     <p class="lead text-light text-center">{{subheading}}</p>
+    {% else %}
+    <p class="lead text-light text-center">Baru pertama kali kemari? <a class="text-light italic" href="{% url 'akun:index' %}">silahkan daftar atau masuk disini</a></p>
+    {% endif %}
+    
   </div>
 </div>
 {% endblock header %}
