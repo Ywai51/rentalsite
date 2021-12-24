@@ -142,7 +142,7 @@
                             <tr>
                                 <th>Tanggal sewa</th>
                                 <th>Mobil</th>
-                                <th>Harga</th>
+                                <th>Total Harga</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -150,7 +150,13 @@
                                 <tr>
                                     <td scope="row">{{pesananMbl.tgl_booking_mbl}}</td>
                                     <td>{{pesananMbl.id_mobil}}</td>
-                                    <td>{{pesananMbl.total_sewa_mbl}}</td>
+                                    <td> 
+                                        <script>
+                                            var num = {{pesananMbl.total_sewa_mbl}};
+                                            num = num.toLocaleString("id-ID");
+                                            document.write(num);
+                                        </script> 
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -163,7 +169,7 @@
                             <tr>
                                 <th>Tanggal sewa</th>
                                 <th>Motor</th>
-                                <th>Harga</th>
+                                <th>Total Harga</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -171,7 +177,13 @@
                                 <tr>
                                     <td scope="row">{{pesananMtr.tgl_booking_mtr}}</td>
                                     <td>{{pesananMtr.id_motor}}</td>
-                                    <td>{{pesananMtr.total_sewa_mtr}}</td>
+                                    <td>
+                                        <script>
+                                            var num = {{pesananMtr.total_sewa_mtr}};
+                                            num = num.toLocaleString("id-ID");
+                                            document.write(num);
+                                        </script>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>

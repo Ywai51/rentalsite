@@ -50,7 +50,12 @@
                             <td><button class="btn btn-outline-dark disabled btn-sm">{{motor.kategori_mtr}}</button></td>
                             <td><i class="fa fa-calendar mr-2" aria-hidden="true"></i>{{motor.tahun_mtr}}</td>
                             <td><button class="btn btn-outline-success active btn-sm">{{motor.status_mtr}}</button></td>
-                            <td><i class="fas fa-money-bill-wave mr-2"></i><strong>Rp. {{harga}}</strong></td>
+                            <td><i class="fas fa-money-bill-wave mr-2"></i><strong>Rp 
+                            <script>
+                                var num = {{motor.harga_mtr}};
+                                num = num.toLocaleString("id-ID");
+                                document.write(num);
+                            </script></strong></td>
                         </tr>
                     </tbody>
                 </table>

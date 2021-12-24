@@ -58,7 +58,7 @@ def aboutMbl(request, slugInput):
         'heading' : " Halaman Detail Mobil ",
         'subheading' : 'Perhatikan Detail Mobil Yang akan disewa di halaman ini.',
         'mobil' : mbl,
-        'harga' : format(mbl.harga_mbl, ',')
     }
     return render(request, 'mobil/aboutMobil.html',context)
  
+

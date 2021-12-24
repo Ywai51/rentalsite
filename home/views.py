@@ -35,3 +35,4 @@ def searchView(request):
             'value' : search
         }
         return render(request, 'home/search.html',context)
+

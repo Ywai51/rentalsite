@@ -52,7 +52,12 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="fab fa-slack-hash mr-1"></i>
                     <button class="btn btn-outline-success active btn-sm">{{mobil.status_mbl}}</button></li>
-                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp {{mobil.harga_mbl}} /hari</li>
+                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp 
+                <script>
+                    var num = {{mobil.harga_mbl}};
+                    num = num.toLocaleString("id-ID");
+                    document.write(num);
+                </script> /hari</li>
             </ul>
             <div class="card-body">
                 <a href="{% url 'mobil:aboutMobil' slugInput=mobil.slug %}" class="btn btn-warning"><i
