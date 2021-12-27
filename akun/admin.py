@@ -8,7 +8,7 @@ class AkunAdminConfig(UserAdmin):
     search_fields   = ('email','nama','no_hp')
     ordering        = ('-tanggal_akun',)
     list_display    = ('email','nama','no_hp','is_staff','last_login')
-    list_filter    = ('is_staff','is_superuser')
+    list_filter     = ('is_staff','is_superuser')
     fieldsets = (
         (None, {
             "fields": (

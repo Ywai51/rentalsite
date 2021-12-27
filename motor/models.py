@@ -26,7 +26,7 @@ class motor(models.Model):
     harga_mtr       = models.IntegerField(verbose_name="Harga Sewa Motor")
     status_mtr      = models.CharField(verbose_name="Status Motor",choices=status, max_length=225, default="Tersedia")
     tentang_mtr     = models.TextField(verbose_name="Deskripsi Motor")
-    tanggal_db_mtr  = models.DateTimeField(verbose_name="Tanggal Database Dibuat",default=timezone.now)
+    tgl_db_mtr  = models.DateTimeField(verbose_name="Tanggal Database Dibuat",default=timezone.now)
     slug            = models.SlugField(blank=True , editable=False)
 
     def save(self):
