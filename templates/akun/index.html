@@ -143,6 +143,7 @@
                                 <th>Tanggal sewa</th>
                                 <th>Mobil</th>
                                 <th>Total Harga</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -150,13 +151,14 @@
                                 <tr>
                                     <td scope="row">{{pesananMbl.tgl_booking_mbl}}</td>
                                     <td>{{pesananMbl.id_mobil}}</td>
-                                    <td> 
+                                    <td> Rp 
                                         <script>
                                             var num = {{pesananMbl.total_sewa_mbl}};
                                             num = num.toLocaleString("id-ID");
                                             document.write(num);
                                         </script> 
                                     </td>
+                                    <td>{{pesananMbl.status_sewa_mbl}}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -170,6 +172,7 @@
                                 <th>Tanggal sewa</th>
                                 <th>Motor</th>
                                 <th>Total Harga</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -177,13 +180,14 @@
                                 <tr>
                                     <td scope="row">{{pesananMtr.tgl_booking_mtr}}</td>
                                     <td>{{pesananMtr.id_motor}}</td>
-                                    <td>
+                                    <td>Rp 
                                         <script>
                                             var num = {{pesananMtr.total_sewa_mtr}};
                                             num = num.toLocaleString("id-ID");
                                             document.write(num);
                                         </script>
                                     </td>
+                                    <td>{{pesananMtr.status_sewa_mtr}}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

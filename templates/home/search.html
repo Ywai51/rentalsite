@@ -40,13 +40,19 @@
         <div class="card mb-4" style="width: 18rem;">
             <img src="{{mobil.foto_mbl.url}}" class="card-img-top" alt="Foto {{mobil.nama_mbl}}">
             <div class="card-body">
-                <h5 class="card-title">{{mobil.nama_mbl}}</h5>
+                <h5 class="card-title">{{mobil.merk_mbl}} {{mobil.nama_mbl}}</h5>
                 <p style="max-width: 200px;" class="card-text text-secondary">{{mobil.tentang_mbl|truncatewords:15}}</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="fab fa-slack-hash mr-1"></i>
                     <button class="btn btn-outline-success active btn-sm">{{mobil.status_mbl}}</button></li>
-                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp {{mobil.harga_mbl}} /hari</li>
+                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp 
+                    <script>
+                        var num = {{mobil.harga_mbl}};
+                        num = num.toLocaleString("id-ID");
+                        document.write(num);
+                    </script> 
+                     /hari</li>
             </ul>
             <div class="card-body">
                 <a href="{% url 'mobil:aboutMobil' slugInput=mobil.slug %}" class="btn btn-warning"><i
@@ -73,13 +79,18 @@
         <div class="card mb-4" style="width: 18rem;">
             <img src="{{motor.foto_mtr.url}}" class="card-img-top" alt="Foto {{motor.nama_mtr}}">
             <div class="card-body">
-                <h5 class="card-title">{{motor.nama_mtr}}</h5>
+                <h5 class="card-title">{{motor.merk_mtr}} {{motor.nama_mtr}}</h5>
                 <p style="max-width: 200px;" class="card-text text-secondary">{{motor.tentang_mtr|truncatewords:15}}</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><i class="fab fa-slack-hash mr-1"></i>
                     <button class="btn btn-success active btn-sm">{{motor.status_mtr}}</button></li>
-                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp {{motor.harga_mtr}} /hari</li>
+                <li class="list-group-item"><i class="fas fa-money-bill-wave mr-1"></i>Rp 
+                <script>
+                    var num = {{motor.harga_mtr}};
+                    num = num.toLocaleString("id-ID");
+                    document.write(num);
+                </script> /hari</li>
             </ul>
             <div class="card-body">
                 <a href="{% url 'motor:aboutMotor' slugInput=motor.slug %}" class="btn btn-warning"><i

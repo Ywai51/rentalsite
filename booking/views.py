@@ -4,7 +4,7 @@ from mobil.models import mobil as mblDB
 from motor.models import motor as mtrDB
 from akun.models import NewAkun
 from .models import bookMobil, bookMotor
-
+import datetime
 
 # Create your views here.
 def mblBooking(request, claimInput):
@@ -31,6 +31,7 @@ def mblBooking(request, claimInput):
             messages.error(request, "Mobil ini telah dibooking pada tanggal yang dipilih, Mohon ganti tanggal atau memesan mobil yang lain. Terimakasih!")
 
         else:
+            inputSlug = claimInput
             bookMobil.objects.create(
                 id_mobil = mobil,
                 id_penyewa_mbl = user, 
@@ -42,13 +43,15 @@ def mblBooking(request, claimInput):
                 atas_nama_mbl = anBank,
                 note_mbl    = note
                 )
-            return redirect('akun:index')
+            return pembayaran(request, pesananInput=inputSlug)
 
     context = {
         'title':"Booking Mobil | R2M",
         'heading':"Halaman Booking Mobil",
         'subheading':"Silahkan isi data dibawah untuk keperluan booking",
-        'totalBayar': format(total_byr, ',')
+        'totalBayar': total_byr,
+        'tglSekarang': str(datetime.datetime.now().date() + datetime.timedelta(days=1)) 
+
     }
     return render(request, 'booking/indexMobil.html',context)
 
@@ -76,6 +79,7 @@ def mtrBooking(request, claimInput):
             messages.error(request, "Motor ini telah dibooking pada tanggal yang dipilih, Mohon ganti tanggal atau memesan motor yang lain.  Terimakasih!")
 
         else:
+            inputSlug = claimInput
             bookMotor.objects.create(
                 id_motor = motor,
                 id_penyewa_mtr = user, 
@@ -87,12 +91,27 @@ def mtrBooking(request, claimInput):
                 atas_nama_mtr = anBank,
                 note_mtr    = note
                 )
-            return redirect('akun:index')
-
+            return pembayaran(request, pesananInput=inputSlug)
     context = {
         'title':"Booking Motor | R2M",
         'heading':"Halaman Booking Motor",
         'subheading':"Silahkan isi data dibawah untuk keperluan booking",
-        'totalBayar': format(total_byr, ',')
+        'totalBayar': total_byr,
+        'tglSekarang': str(datetime.datetime.now().date() + datetime.timedelta(days=1)) 
     }
     return render(request, 'booking/indexMotor.html',context)
+
+def pembayaran(request, pesananInput):
+    if mblDB.objects.filter(slug = pesananInput).exists():
+        mobil = mblDB.objects.get(slug=pesananInput)
+        total_byr = int(mobil.harga_mbl/100*25)
+    else:
+        motor = mtrDB.objects.get(slug=pesananInput)
+        total_byr = int(motor.harga_mtr/100*25)
+
+    context = {
+        'title':"Booking Motor | R2M",
+        'heading':"Tata Cara Pembayaran",
+        'totalBayar': total_byr
+    }
+    return render(request, 'booking/pembayaran.html',context)

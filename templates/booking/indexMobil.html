@@ -46,8 +46,9 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="form_tglSewa">Tanggal Sewa Mobil *</label>
-                    <input id="form_tglSewa" type="date" name="tgl_sewa" class="form-control" required="required"
-                      data-error="Mohon isi form ini">
+                    <input id="form_tglSewa" type="date" name="tgl_sewa" class="form-control" min="{{tglSekarang}}" required="required"
+                      min="2021-12-11" max="2022-12-11" data-error="Mohon isi form ini">
+                    
                   </div>
                 </div>
               </div>
@@ -91,8 +92,12 @@
                   </div>
                 </div>
                 <div class="col-md-12 mt-4">
-                  <strong class="h5"> Total Bayar (DP 25%) : <button type="button" class="btn btn-dark disabled"> Rp {{totalBayar}} </button></strong> <br>
-
+                  <strong class="h5"> Total Bayar (DP 25%) : <button type="button" class="btn btn-dark disabled"> Rp 
+                  <script>
+                    var num = {{totalBayar}};
+                    num = num.toLocaleString("id-ID");
+                    document.write(num);
+                  </script></button></strong> <br>
                   <small>Total Pembayaran sebesar 25% harga sewa sebagai DP Booking! Sisa pembayaran 75% dapat dilunasi di tempat rental. Ketentuan ini dapat dibaca dalam <a href="{% url 'home:snk' %}">Ketentuan Layanan</a></small>
                 </div>
               </div>
@@ -101,8 +106,7 @@
                 <div class="col-md-12">
                   <div class="form-group"> <label for="form_message">Pesan untuk admin :</label> <textarea
                       id="form_message" name="message" class="form-control"
-                      placeholder="Tinggalkan pesan.. * dapat dikosongkan" rows="4" required="required"
-                      data-error="Please, leave us a message."></textarea> </div>
+                      placeholder="Tinggalkan pesan.. * dapat dikosongkan" rows="4"></textarea> </div>
                 </div>
                 <div class="col-md-12">
                   <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Lanjut Ke Pembayaran">
@@ -112,6 +116,6 @@
           </form>
         </div>
       </div>
-    </div> <!-- /.8 -->
-  </div> <!-- /.row-->
+    </div> 
+  </div> 
   {% endblock content %}
