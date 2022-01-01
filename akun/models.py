@@ -3,9 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 from django.db.models.fields import DateTimeField
 from django.utils import timezone
 
-# Create your models here.
-class AkunManager(BaseUserManager):
 
+class AkunManager(BaseUserManager):
     def create_superuser(self, email, nama, no_hp, password, **other_fields):
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_superuser', True)
@@ -28,7 +27,6 @@ class AkunManager(BaseUserManager):
         user.set_password(password)
         user.save()
         return user
-
 
 class NewAkun(AbstractBaseUser,PermissionsMixin):
 

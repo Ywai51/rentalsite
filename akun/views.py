@@ -6,7 +6,7 @@ from akun.forms import FormAkun
 from .models import NewAkun
 from booking.models import bookMobil,bookMotor
 
-# Create your views here.
+
 def index(request):
     #cek user login/belum
     if request.user.is_authenticated:

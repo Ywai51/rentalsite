@@ -149,16 +149,21 @@
                         <tbody>
                             {% for pesananMbl in pesananMbl %}
                                 <tr>
-                                    <td scope="row">{{pesananMbl.tgl_booking_mbl}}</td>
-                                    <td>{{pesananMbl.id_mobil}}</td>
-                                    <td> Rp 
+                                    <td scope="row"><small>{{pesananMbl.tgl_booking_mbl}}</small></td>
+                                    <td><small>{{pesananMbl.id_mobil}}</small></td>
+                                    <td><small> Rp 
                                         <script>
                                             var num = {{pesananMbl.total_sewa_mbl}};
                                             num = num.toLocaleString("id-ID");
                                             document.write(num);
                                         </script> 
+                                        </small>
                                     </td>
-                                    <td>{{pesananMbl.status_sewa_mbl}}</td>
+                                    <td><small>
+                                        <a name="" id="" class="btn btn-info btn-sm {% if pesananMbl.status_sewa_mbl != "Dipesan" %} disabled {% endif %}" href="{% url 'booking:bayar' pesananInput=pesananMbl.id_mobil.slug %} " role="button">
+                                            {{pesananMbl.status_sewa_mbl}}</a></small>
+                                    </td>
+                                    
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -178,16 +183,20 @@
                         <tbody>
                             {% for pesananMtr in pesananMtr %}
                                 <tr>
-                                    <td scope="row">{{pesananMtr.tgl_booking_mtr}}</td>
-                                    <td>{{pesananMtr.id_motor}}</td>
-                                    <td>Rp 
+                                    <td scope="row"><small>{{pesananMtr.tgl_booking_mtr}}</small></td>
+                                    <td><small>{{pesananMtr.id_motor}}</small></td>
+                                    <td><small>Rp 
                                         <script>
                                             var num = {{pesananMtr.total_sewa_mtr}};
                                             num = num.toLocaleString("id-ID");
                                             document.write(num);
                                         </script>
+                                        </small>
                                     </td>
-                                    <td>{{pesananMtr.status_sewa_mtr}}</td>
+                                    <td><small>
+                                        <a name="" id="" class="btn btn-info btn-sm {% if pesananMtr.status_sewa_mtr != "Dipesan" %} disabled {% endif %}" href="{% url 'booking:bayar' pesananInput=pesananMtr.id_motor.slug %} " role="button">
+                                            {{pesananMtr.status_sewa_mtr}}</a></small>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -196,7 +205,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 {% endblock content %}
