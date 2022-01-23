@@ -66,6 +66,7 @@ def loginView(request):
                 messages.success(request, "Berhasil login!")
                 return redirect('akun:index')
             else:
+                messages.error(request, "Username atau Password Tidak Terdaftar!")
                 return redirect('akun:index')
 
     context = {

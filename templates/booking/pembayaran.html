@@ -35,7 +35,7 @@
               document.write(num);
             </script></strong> ke rekening kami dibawah ini. 
           </p>
-          <button type="button" class="btn btn-info btn-block disabled"> <hr/> <h4>(BRI) 7775 2828 8990 22</h4><h5>Rental Dua M</h5> <hr/> <h4>Rp. <script>
+          <button type="button" class="btn btn-info btn-block disabled"> <hr/> <h4>(BRI) 7775 2828 8990 22</h4><h5>Rental Dua M</h5> <hr/> <h4>Rp <script>
             var num = {{totalBayar}};
             num = num.toLocaleString("id-ID");
             document.write(num);
@@ -49,6 +49,9 @@
             <li>Setelah dibayar detail pesanan tidak dapat diubah</li>
             <li>Baca Ketentuan lainnya di <a href="{% url 'home:snk' %}">Ketentuan Layanan</a></li>
           </ul>
+            <div class="py-3">
+              <a href="{% url 'akun:index' %}"><button type="button" class="btn btn-success active btn-block">Saya Mengerti!</button></a>
+            </div>
         </div>
       </div>
     </div>    

@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.http import request
 from .models import NewAkun
 from django.contrib.auth.admin import UserAdmin
 
@@ -9,6 +10,11 @@ class AkunAdminConfig(UserAdmin):
     ordering        = ('-tanggal_akun',)
     list_display    = ('email','nama','no_hp','is_staff','last_login')
     list_filter     = ('is_staff','is_superuser')
+    
+    def suArea(self, request):
+        if request.user.is_staff:
+            self.readonly_fields = ['is_superuser']
+    
     fieldsets = (
         (None, {
             "fields": (
@@ -22,7 +28,7 @@ class AkunAdminConfig(UserAdmin):
         }),
         ("Permission",{
             "fields": (
-                'is_active','is_staff','is_superuser',
+                'is_active','is_staff','is_superuser','groups'
             )
         }),
         ("Password",{
